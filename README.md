@@ -16,6 +16,7 @@ Example of the configuration is:
     </startup>
     <appSettings>
         <add key="FromBlog" value="http://fresky.github.io/"/>
+		<add key="FromBlogName" value="fresky.github.io - Dawei XU"/>
         <add key="PostDir" value="D:\Software\post"/>
         <add key="ToBlog" value="http://fresky.cnblogs.com/services/metaweblog.aspx"/>
         <add key="UserName" value="fresky"/>
@@ -38,4 +39,5 @@ SyncPost is released under the MIT License. See the bundled LICENSE file for det
 
 ## Chang Log
 
-1. 01/24/2014	initial version
+1. 01/26/2014	update the blog name
+2. 01/24/2014	initial version

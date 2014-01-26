@@ -33,6 +33,7 @@ namespace SyncPost
             string date = "";
 
             string fromBlog = System.Configuration.ConfigurationManager.AppSettings["FromBlog"];
+            string fromBlogName = System.Configuration.ConfigurationManager.AppSettings["FromBlogName"];
             string postDir = System.Configuration.ConfigurationManager.AppSettings["PostDir"];
             DirectoryInfo di = new DirectoryInfo(postDir);
             FileInfo latestInfo = di.GetFiles("*.markdown").OrderByDescending(fi => fi.Name).First();
@@ -58,8 +59,8 @@ namespace SyncPost
                 Path.GetFileNameWithoutExtension(latestInfo.Name).Substring(11));
             body =
                 string.Format(
-                    @"<p>博客搬到了<a href=""http://fresky.github.io/"">fresky.github.io - Dawei XU</a>，请各位看官挪步。最新的一篇是：<a href=""{0}"">{1}</a>。</p>",
-                    address, title);
+                    @"<p>博客搬到了<a href=""{2}"">{3}</a>，请各位看官挪步。最新的一篇是：<a href=""{0}"">{1}</a>。</p>",
+                    address, title, fromBlog, fromBlogName);
             Console.WriteLine("Original Link: {0}", address);
         }
 
