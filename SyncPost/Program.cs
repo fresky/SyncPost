@@ -35,8 +35,9 @@ namespace SyncPost
             string fromBlog = System.Configuration.ConfigurationManager.AppSettings["FromBlog"];
             string fromBlogName = System.Configuration.ConfigurationManager.AppSettings["FromBlogName"];
             string postDir = System.Configuration.ConfigurationManager.AppSettings["PostDir"];
+            string postExt = System.Configuration.ConfigurationManager.AppSettings["PostExt"];
             DirectoryInfo di = new DirectoryInfo(postDir);
-            FileInfo latestInfo = di.GetFiles("*.markdown").OrderByDescending(fi => fi.Name).First();
+            FileInfo latestInfo = di.GetFiles(postExt).OrderByDescending(fi => fi.Name).First();
 
             using (StreamReader sr = new StreamReader(latestInfo.FullName))
             {
@@ -55,7 +56,7 @@ namespace SyncPost
                 }
             }
 
-            string address = string.Format("{0}blog/{1}/{2}/", fromBlog, date.Replace('-', '/'),
+            string address = string.Format("{0}/{1}/{2}/", fromBlog, date.Replace('-', '/'),
                 Path.GetFileNameWithoutExtension(latestInfo.Name).Substring(11));
             body =
                 string.Format(
