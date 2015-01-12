@@ -46,7 +46,7 @@ namespace SyncPost
                     string line = sr.ReadLine();
                     if (line.StartsWith("title: "))
                     {
-                        title = line.Substring(8, line.Length - 9);
+                        title = line.Replace("title: ", "").Trim();
                     }
                     else if (line.StartsWith("date: "))
                     {
